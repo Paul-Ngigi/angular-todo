@@ -1,0 +1,13 @@
+<div>
+    <h1>Todo</h1>
+    <hr>
+    <p>Here is a list of my todo items</p>
+    <ol>
+        <div *ngFor='let todo of todos;let i = index'>
+            <li appStrikethrough>{{todo.name}} by {{todo.completeDate|date}}</li>
+            <button (click)='toggleDetails(i)'>Toggle Todo</button>
+            <app-todo-details *ngIf='todo.showTodo' [todo]='todo' (isComplete) = 'completeTodo($event,i)'></app-todo-details>
+        </div>
+    </ol>
+    <p *ngIf='todos.length > 5'>I really seem to have so many items to do</p>
+</div>
